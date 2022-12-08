@@ -1,0 +1,22 @@
+// LeetCode 872 - Similar Leaf Trees
+
+class Solution {
+    public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+        List<Integer> l1 = new ArrayList<Integer>();
+        List<Integer> l2 = new ArrayList<Integer>();
+        leafNum(root1, l1);
+        leafNum(root2, l2);
+        return l1.equals(l2);
+    }
+    public void leafNum(TreeNode root, List<Integer> num){
+        if(root == null){
+            return;
+        }
+        if(root.left == null && root.right == null){
+            num.add(root.val);
+            return;
+        }
+        leafNum(root.left,num);
+        leafNum(root.right, num);
+    }
+}
